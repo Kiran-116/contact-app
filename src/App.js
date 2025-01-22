@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import uuid  from "uuid";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { v4 as uuid } from 'uuid';
 import "./App.css";
 import Header from "./components/Header";
 import AddContact from "./components/AddContact";
 import ContactList from "./components/ContactList";
+import ContactDetail from "./components/ContactDetail";
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
@@ -43,9 +44,14 @@ function App() {
 
   return (
     <div className="ui container">
-      <Header />
-      <AddContact addContactHandler={addContactHandler} />
-      <ContactList contacts={contacts} getContactId={removeContactHandler} />
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<ContactList contacts={contacts} getContactId={removeContactHandler} />} />
+          <Route path="/add" element={<AddContact addContactHandler={addContactHandler} />} />
+          <Route path="/contact/:id" element={<ContactDetail  />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
