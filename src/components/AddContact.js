@@ -42,8 +42,8 @@ const AddContact = (props) => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <button className="ui button blue">Add</button>
-        <button type="button" onClick={() => navigate("/")}>
+        <button type="submit" className="ui button blue">Add</button>
+        <button type="button" className="ui button" onClick={() => navigate("/")}>
           Back
         </button>
       </form>
